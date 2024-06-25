@@ -37,7 +37,7 @@ func NewMiddleware(repository RepositoryInterface) (*Middleware, error) {
 	}, nil
 }
 
-func (m *Middleware) Limit(next http.Handler) http.Handler {
+func (m *Middleware) Limit(next http.HandlerFunc) http.HandlerFunc {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		ctx := r.Context()
 
@@ -99,7 +99,6 @@ func (m *Middleware) allowIP(ctx context.Context, ip string) bool {
 	if err != nil {
 		m.repository.Set(ctx, ip, 0, getIPWindow())
 	}
-
 	if consumed < getIPLimit() {
 		m.repository.Increment(ctx, ip)
 		consumed, _ = m.repository.Get(ctx, ip)
@@ -112,6 +111,7 @@ func (m *Middleware) allowIP(ctx context.Context, ip string) bool {
 }
 
 func (m *Middleware) allowToken(ctx context.Context, token string) bool {
+	fmt.Println(token)
 	expired, _ := m.repository.IsExpired(ctx, token)
 	if expired {
 		return false

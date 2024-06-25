@@ -88,11 +88,13 @@ func main() {
 		panic(err)
 	}
 
-	mux := http.NewServeMux()
+	http.HandleFunc("/ping", endpointHandler)
 
-	mux.HandleFunc("/ping", endpointHandler)
+	// mux := http.NewServeMux()
 
-	err = http.ListenAndServe(":8080", rateLimiter.Limit(mux))
+	// mux.HandleFunc("/ping", endpointHandler)
+
+	err = http.ListenAndServe(":8080", rateLimiter.Limit(endpointHandler))
 	if err != nil {
 		log.Println("There was an error listening on port :8080", err)
 	}
