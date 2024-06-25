@@ -1,9 +1,5 @@
 package limiter
 
-// https://www.inanzzz.com/index.php/post/xgod/testing-a-middleware-within-golang
-// https://github.com/go-redis/redismock/tree/master
-// https://elliotchance.medium.com/mocking-redis-in-unit-tests-in-go-28aff285b98
-
 import (
 	"context"
 	"encoding/json"
