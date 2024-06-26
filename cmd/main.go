@@ -1,45 +1,5 @@
 package main
 
-// import (
-// 	"encoding/json"
-// 	"log"
-// 	"net/http"
-
-// 	"github.com/joho/godotenv"
-// 	"github.com/tiagocosta/rate-limiter/pkg/limiter"
-// )
-
-// type Message struct {
-// 	Status string `json:"status"`
-// 	Body   string `json:"body"`
-// }
-
-// func main() {
-// 	if err := godotenv.Load("cmd/.env"); err != nil {
-// 		log.Fatal("error trying to load env variables")
-// 		return
-// 	}
-
-// 	http.Handle("/ping", limiter.RateLimiter(endpointHandler))
-// 	err := http.ListenAndServe(":8080", nil)
-// 	if err != nil {
-// 		log.Println("There was an error listening on port :8080", err)
-// 	}
-// }
-
-// func endpointHandler(writer http.ResponseWriter, request *http.Request) {
-// 	writer.Header().Set("Content-Type", "application/json")
-// 	writer.WriteHeader(http.StatusOK)
-// 	message := Message{
-// 		Status: "Successful",
-// 		Body:   "api reached",
-// 	}
-// 	err := json.NewEncoder(writer).Encode(&message)
-// 	if err != nil {
-// 		return
-// 	}
-// }
-
 import (
 	"encoding/json"
 	"log"
